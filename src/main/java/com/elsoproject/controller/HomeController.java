@@ -1,20 +1,22 @@
-package com.elsoproject;
+package com.elsoproject.controller;
 
+import com.elsoproject.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
-    private SpyGirl spicy = new SpyGirl();
+    private SpyService spyService;
 
     @Autowired
-    public void setSpicy(SpyGirl spicy) {
-        this.spicy = spicy;
+    public void setSpyService(SpyService spyService) {
+        this.spyService = spyService;
     }
 
     @RequestMapping("/")
-    public String index(){
-        return spicy.iSaySomething();
+    public String index()
+    {
+        return spyService.iSaySomething();
     }
 }
